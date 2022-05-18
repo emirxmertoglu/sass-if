@@ -1,0 +1,66 @@
+/* IF EXAMPLE */
+@mixin avatar-generate($size, $circle: false) {
+  width: $size;
+  height: $size;
+
+  @if $circle {
+    border-radius: $size / 2;
+  }
+}
+
+.square {
+  @include avatar-generate(200px, false);
+}
+
+.circle {
+  @include avatar-generate(400px, true);
+}
+/* IF EXAMPLE */
+
+/* IF & ELSE EXAMPLE */
+$light-background: #ff7961;
+$light-text: #000000;
+$dark-background: #002984;
+$dark-text: #ffffff;
+
+@mixin theme-colors($light-theme: true) {
+  @if $light-theme {
+    background-color: $light-background;
+    color: $light-text;
+  } @else {
+    background-color: $dark-background;
+    color: $dark-text;
+  }
+}
+/* IF & ELSE EXAMPLE */
+
+/* IF, ELSE IF & ELSE EXAMPLE */
+@mixin generate-border($size, $style, $color, $direction) {
+  border-color: transparent;
+  border-style: $style;
+  border-width: $size;
+
+  @if $direction == yukarisi {
+    border-top-color: $color;
+  } @else if $direction == sag {
+    border-right-color: $color;
+  } @else if $direction == asagisi {
+    border-bottom-color: $color;
+  } @else if $direction == sol {
+    border-left-color: $color;
+  } @else {
+    @error "Bu sectiginiz #{$direction} bulamadim";
+  }
+}
+/* IF, ELSE IF & ELSE EXAMPLE */
+
+.banner {
+  padding: 20px;
+  font-family: sans-serif;
+  @include theme-colors($light-theme: true);
+  @include generate-border(5px, solid, crimson, yukarisi);
+
+  body.dark & {
+    @include theme-colors($light-theme: false);
+  } // SASS'da '&' ifadesinin kullanimina yonelik bu makaleye bakmanizi tavsiye ederim: https://css-tricks.com/the-sass-ampersand/
+}
