@@ -40,16 +40,16 @@ $dark-text: #ffffff;
   border-style: $style;
   border-width: $size;
 
-  @if $direction == yukarisi {
+  @if $direction == ust {
     border-top-color: $color;
   } @else if $direction == sag {
     border-right-color: $color;
-  } @else if $direction == asagisi {
+  } @else if $direction == alt {
     border-bottom-color: $color;
   } @else if $direction == sol {
     border-left-color: $color;
   } @else {
-    @error "Bu sectiginiz #{$direction} bulamadim";
+    @error "Belirtilen '#{$direction}' yonu bulunamadi!";
   }
 }
 /* IF, ELSE IF & ELSE EXAMPLE */
@@ -58,7 +58,7 @@ $dark-text: #ffffff;
   padding: 20px;
   font-family: sans-serif;
   @include theme-colors($light-theme: true);
-  @include generate-border(5px, solid, crimson, yukarisi);
+  @include generate-border(5px, solid, crimson, ust);
 
   body.dark & {
     @include theme-colors($light-theme: false);
