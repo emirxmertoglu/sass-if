@@ -1,6 +1,0 @@
-$light-background: #FF7961;
-$light-text: #000000;
-$dark-background: #002984;
-$dark-text: #FFFFFF;
-
-https://css-tricks.com/the-sass-ampersand/
